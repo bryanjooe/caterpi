@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://5wtuvtummqrn"]
+
+[ext_resource type="PackedScene" uid="uid://cao0ermgevgx0" path="res://scenes/player.tscn" id="1_e0cvd"]
+[ext_resource type="Script" uid="uid://cdr8qxhgrkh2v" path="res://scripts/onewayBranch.gd" id="1_nos0u"]
+[ext_resource type="PackedScene" uid="uid://d1hiduymkotha" path="res://scenes/apple.tscn" id="3_71baw"]
+[ext_resource type="Texture2D" uid="uid://chdynb067oppc" path="res://assets/background/Screenshot_2026-01-02_at_9.20.30_PM.png" id="4_dj4wq"]
+[ext_resource type="Texture2D" uid="uid://qnxovkdxvswr" path="res://assets/background/Screenshot_2026-01-02_at_9.20.30_PM_4-removebg-preview (1).png" id="5_k0mew"]
+[ext_resource type="Texture2D" uid="uid://cjskpvxslcsht" path="res://assets/background/Screenshot_2026-01-02_at_9.20.30_PM_2-removebg-preview (1).png" id="6_b0vvs"]
+[ext_resource type="Texture2D" uid="uid://bnj8cd213yx44" path="res://assets/background/Screenshot_2026-01-02_at_9.20.30_PM_1-removebg-preview.png" id="7_oyk6k"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_e0cvd"]
+b = Vector2(61, 2)
+
+[node name="level2" type="Node2D"]
+
+[node name="Branches" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Branches"]
+polygon = PackedVector2Array(416, 247, 583, 277, 766, 331, 475, 199, 253, 174, 217, 275)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Branches"]
+polygon = PackedVector2Array(1132, 626, 989, 604, 653, 610, 720, 552, 863, 521, 1174, 552, 1190, 507, 863, 450, 684, 490, 523, 564, 316, 609, 186, 497, 166, 279, 193, 172, 130, 2, 0, -3, 1, 653, 1154, 649)
+
+[node name="onewayBranch" type="CollisionShape2D" parent="Branches"]
+position = Vector2(192, 173)
+shape = SubResource("SegmentShape2D_e0cvd")
+one_way_collision = true
+script = ExtResource("1_nos0u")
+
+[node name="Polygon2D3" type="Polygon2D" parent="Branches"]
+color = Color(0.4392157, 0.27450982, 0.18431373, 1)
+polygon = PackedVector2Array(185, 176, 195, 174, 254, 173, 247, 270, 218, 276, 143, 281)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Branches"]
+color = Color(0.5294118, 0.3529412, 0.23921569, 1)
+polygon = PackedVector2Array(253, 173, 218, 276, 418, 247, 581, 276, 765, 331, 475, 196)
+
+[node name="Polygon2D" type="Polygon2D" parent="Branches"]
+color = Color(0.5294118, 0.3529412, 0.23921569, 1)
+polygon = PackedVector2Array(128, 0, 195, 175, 164, 281, 187, 492, 314, 607, 532, 562, 677, 490, 861, 452, 1186, 504, 1174, 551, 860, 525, 720, 550, 653, 608, 994, 605, 1151, 632, 1152, 651, 1, 655, 2, -5)
+
+[node name="worm" parent="." instance=ExtResource("1_e0cvd")]
+position = Vector2(343, 560)
+
+[node name="Apple" parent="." instance=ExtResource("3_71baw")]
+position = Vector2(333, 154)
+
+[node name="Apple2" parent="." instance=ExtResource("3_71baw")]
+position = Vector2(951, 435)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(0.24, 0)
+scroll_base_scale = Vector2(11.165, 11.165)
+
+[node name="Screenshot20260102At9_20_30Pm" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(573, 321.5)
+scale = Vector2(0.49067795, 0.4054878)
+texture = ExtResource("4_dj4wq")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1135.869, 0)
+
+[node name="Screenshot20260102At9_20_30Pm4RemovebgPreview(1)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(572.5, 327.99997)
+scale = Vector2(1.9282136, 1.543269)
+texture = ExtResource("5_k0mew")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1067.014, 0)
+
+[node name="Screenshot20260102At9_20_30Pm2RemovebgPreview(1)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(574.75, 332)
+scale = Vector2(1.9207011, 1.5721154)
+texture = ExtResource("6_b0vvs")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(1065.424, 0)
+
+[node name="Screenshot20260102At9_20_30Pm1RemovebgPreview" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(574, 329)
+scale = Vector2(1.9265444, 1.5721153)
+texture = ExtResource("7_oyk6k")
