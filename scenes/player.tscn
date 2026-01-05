@@ -1,0 +1,554 @@
+[gd_scene load_steps=15 format=3 uid="uid://cao0ermgevgx0"]
+
+[ext_resource type="Script" uid="uid://bq77o73dhy8ka" path="res://scripts/bodySegment.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bliblkyjh5ijk" path="res://scripts/playerData.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://bgcdyn3mlwd06" path="res://scripts/head.gd" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://bvw1rbdnphw2e" path="res://assets/shapes/Circle.png" id="5_qlg0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
+size = Vector2(36, 8)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u8vuu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
+
+[sub_resource type="Gradient" id="Gradient_qhqgy"]
+colors = PackedColorArray(0.39607844, 0.6627451, 0.36862746, 1, 0.19215687, 0.45882353, 0.3137255, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+radius = 21.0
+height = 60.0
+
+[sub_resource type="Gradient" id="Gradient_tuyoq"]
+colors = PackedColorArray(0.9, 0.9, 0.9, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "Flap"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0, -0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.005, -0.125, 0.24875, 0.125, -0.24875, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.125, 0, 0.125, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, 8, -0.125, -2.75, 0.125, 2.75, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0, -13, -0.125, -1.5, 0.125, 1.5, -19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body2:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.125, 0, 0.125, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body2:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1e-05, -0.125, 0.2499975, 0.125, -0.2499975, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0, -0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body2:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.125, -2.5, 0.125, 2.5, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body2:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-21, -0.25, 0, 0.25, 0, -6, -0.125, -3.75, 0.125, 3.75, -21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.36666667, 1)
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Body:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body2:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body2:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.5235988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body2:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body2:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-21, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"Flap": SubResource("Animation_dqkch"),
+&"RESET": SubResource("Animation_qlg0r")
+}
+
+[sub_resource type="Gradient" id="Gradient_fjrip"]
+colors = PackedColorArray(1, 0.23000002, 0.23000002, 1, 1, 0.43137255, 0.43137255, 1)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_qhqgy")
+metadata/isPlayer = true
+
+[node name="Worm" type="Node2D" parent="."]
+
+[node name="Body1" type="RigidBody2D" parent="Worm"]
+position = Vector2(-28, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_3vyb7")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Body1"]
+shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="RayCast2D" type="RayCast2D" parent="Worm/Body1"]
+collision_mask = 2
+
+[node name="Body2" type="RigidBody2D" parent="Worm"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_3vyb7")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Body2"]
+shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Worm/Body2"]
+position = Vector2(14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Head")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Worm/Body2"]
+position = Vector2(-14, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Body1")
+
+[node name="RayCast2D" type="RayCast2D" parent="Worm/Body2"]
+collision_mask = 2
+
+[node name="Head" type="RigidBody2D" parent="Worm"]
+position = Vector2(28, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_g2els")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Head"]
+shape = SubResource("RectangleShape2D_u8vuu")
+
+[node name="RayCast2D" type="RayCast2D" parent="Worm/Head"]
+collision_mask = 2
+
+[node name="Wheels" type="Node2D" parent="Worm"]
+position = Vector2(-28, 0)
+
+[node name="Wheel1" type="RigidBody2D" parent="Worm/Wheels"]
+position = Vector2(-15, 0)
+physics_material_override = SubResource("PhysicsMaterial_u8vuu")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Wheels/Wheel1"]
+scale = Vector2(1.395, 1.395)
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Worm/Wheels/Wheel1"]
+node_a = NodePath("..")
+node_b = NodePath("../../../Body1")
+
+[node name="Body" type="CPUParticles2D" parent="Worm/Wheels/Wheel1"]
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 15.04
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_qhqgy")
+
+[node name="Wheel2" type="RigidBody2D" parent="Worm/Wheels"]
+position = Vector2(14, 0)
+physics_material_override = SubResource("PhysicsMaterial_u8vuu")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Wheels/Wheel2"]
+scale = Vector2(1.395, 1.395)
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Worm/Wheels/Wheel2"]
+node_a = NodePath("..")
+node_b = NodePath("../../../Body2")
+
+[node name="Body2" type="CPUParticles2D" parent="Worm/Wheels/Wheel2"]
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 15.04
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_qhqgy")
+
+[node name="Wheel3" type="RigidBody2D" parent="Worm/Wheels"]
+position = Vector2(42, 0)
+physics_material_override = SubResource("PhysicsMaterial_u8vuu")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Wheels/Wheel3"]
+scale = Vector2(1.395, 1.395)
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Worm/Wheels/Wheel3"]
+node_a = NodePath("..")
+node_b = NodePath("../../../Body2")
+
+[node name="Body3" type="CPUParticles2D" parent="Worm/Wheels/Wheel3"]
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 15.04
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_qhqgy")
+
+[node name="Wheel4" type="RigidBody2D" parent="Worm/Wheels"]
+position = Vector2(71, 0)
+physics_material_override = SubResource("PhysicsMaterial_u8vuu")
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm/Wheels/Wheel4"]
+scale = Vector2(1.395, 1.395)
+shape = SubResource("CircleShape2D_3vyb7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Worm/Wheels/Wheel4"]
+node_a = NodePath("..")
+node_b = NodePath("../../../Head")
+
+[node name="Body4" type="CPUParticles2D" parent="Worm/Wheels/Wheel4"]
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 15.04
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_qhqgy")
+
+[node name="Pupa" type="Node2D" parent="."]
+visible = false
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Pupa"]
+metadata/isPlayer = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pupa/RigidBody2D"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tuyoq")
+
+[node name="Body2" type="CPUParticles2D" parent="Pupa/RigidBody2D"]
+position = Vector2(10, 0)
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 20.49
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="Body" type="CPUParticles2D" parent="Pupa/RigidBody2D"]
+position = Vector2(-9, 0)
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 20.49
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="ButterFly" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ButterFly"]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}
+
+[node name="Body3" type="CPUParticles2D" parent="ButterFly"]
+rotation = -0.51013166
+scale = Vector2(1.67, 0.06)
+amount = 93
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 17.22
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_tuyoq")
+
+[node name="Body" type="CPUParticles2D" parent="ButterFly"]
+position = Vector2(-19, -3)
+rotation = -0.5235988
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 11.34
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_fjrip")
+
+[node name="Body2" type="CPUParticles2D" parent="ButterFly"]
+position = Vector2(0, -21)
+rotation = -0.5235988
+amount = 403
+texture = ExtResource("5_qlg0r")
+lifetime = 0.2
+preprocess = 0.32
+randomness = 0.39
+lifetime_randomness = 0.54
+emission_shape = 1
+emission_sphere_radius = 17.22
+gravity = Vector2(0, 0)
+angular_velocity_max = 51.96
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_fjrip")
+
+[node name="Circle" type="Sprite2D" parent="ButterFly"]
+visible = false
+position = Vector2(-1.1855414, 0.6844764)
+rotation = -0.5235988
+scale = Vector2(1.1439713, 0.0806719)
+texture = ExtResource("5_qlg0r")
